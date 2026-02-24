@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روبوت الدردشة الصوتية | Voice Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🤖 روبوت الدردشة الصوتية</h1>
+            <p class="subtitle">مساعد ذكي متخصص في هندسة المعلوماتية وعلوم الحاسب</p>
+        </header>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <label for="languageSelect">🌐 اللغة:</label>
+            <select id="languageSelect">
+                <option value="ar-SA" selected>العربية</option>
+                <option value="en-US">English</option>
+            </select>
+        </div>
+
+        <!-- Status Display -->
+        <div class="status-container">
+            <div id="statusIndicator" class="status-indicator ready" data-status="ready">
+                <span class="status-dot"></span>
+                <span id="statusText" class="status-text">جاهز</span>
+            </div>
+            <div id="statusMessage" class="status-message">
+                اضغط على الزر وقل: روبوت ثم سؤالك
+            </div>
+        </div>
+
+        <!-- Interim Transcript Display (Real-time speech recognition) -->
+        <div class="interim-container">
+            <div class="interim-label">🎤 ما تقوله الآن:</div>
+            <div id="interimTranscript" class="interim-transcript"></div>
+        </div>
+
+        <!-- Final Transcript Display -->
+        <div class="final-transcript-container">
+            <div class="final-label">✅ ما قلته:</div>
+            <div id="finalTranscriptDisplay" class="final-transcript"></div>
+        </div>
+
+        <!-- Assistant Response Display -->
+        <div class="assistant-container">
+            <div class="assistant-label">🤖 رد المساعد:</div>
+            <div id="assistantTextDisplay" class="assistant-text"></div>
+        </div>
+
+        <!-- Voice Indicator -->
+        <div id="voice-indicator" class="hidden">
+            <span>🎤 جاري الرد...</span>
+            <div class="waveform">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <!-- Recording Button -->
+        <div class="controls">
+            <button id="testAudioButton" class="record-button" style="background-color: #4CAF50; margin-right: 10px;">
+                <span class="icon">🔊</span>
+                <span class="text">اختبار الصوت</span>
+            </button>
+            <button id="recordButton" class="record-button">
+                <span class="icon">🎤</span>
+                <span class="text">اضغط للتحدث</span>
+            </button>
+        </div>
+
+        <!-- Transcript Display (Conversation History) -->
+        <div class="transcript-container">
+            <h3>💬 محادثة</h3>
+            <div id="transcript" class="transcript">
+                <div class="transcript-empty">لا توجد رسائل بعد</div>
+            </div>
+        </div>
+
+        <!-- Debug Console -->
+        <div class="debug-container">
+            <h3>🔧 سجل التصحيح (Debug Log)</h3>
+            <button id="clearDebug" class="clear-button">مسح السجل</button>
+            <div id="debugLog" class="debug-log"></div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <div class="info-card">
+                <h4>📌 تعليمات الاستخدام</h4>
+                <ul>
+                    <li>ابدأ جملتك بكلمة <strong>"روبوت"</strong></li>
+                    <li>اسأل عن هندسة المعلوماتية وعلوم الحاسب فقط</li>
+                    <li>اضغط مع الاستمرار على الزر للتحدث</li>
+                    <li>أفلت الزر عند الانتهاء من السؤال</li>
+                    <li>استخدم Google Chrome أو Edge لأفضل نتائج</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>🎯 أمثلة على الأسئلة</h4>
+                <ul>
+                    <li>"روبوت ما هي لغة بايثون؟"</li>
+                    <li>"روبوت ما الفرق بين TCP و UDP؟"</li>
+                    <li>"روبوت ما هي قواعد البيانات؟"</li>
+                    <li>"روبوت ما هو الذكاء الاصطناعي؟"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Connection Status -->
+        <div id="connectionStatus" class="connection-status disconnected">
+            <span class="connection-dot"></span>
+            <span class="connection-text">غير متصل</span>
+        </div>
+    </div>
+
+    <!-- Audio Streaming Scripts -->
+    <script src="audio-streamer.js"></script>
+    <script src="audio-player.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
